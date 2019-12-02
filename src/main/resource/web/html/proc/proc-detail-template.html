@@ -1,0 +1,94 @@
+  <!-- 상세업무 -->
+  <script id="procDetailTemplate" type="text/x-jquery-tmpl">
+    {{if procInfo.mapType == PROC_MAP_TYPE.MAP || procInfo.docBody}}
+    <div class="tab-group" ng-if="procInfo.mapType == PROC_MAP_TYPE.MAP || procInfo.docBody">
+      <!-- 맵일 경우 사용 -->
+      <div class="tab-group-title">
+        <h3>&#x29BE;&nbsp;상세 업무</h3>
+      </div>
+      {{if procInfo.mapType == PROC_MAP_TYPE.MAP}}
+      <div class="web-modeler-view relation-group border0 view-readonly" ng-if="procInfo.mapType === PROC_MAP_TYPE.MAP">
+        <p id="mapArea">
+          {{tmpl "#webModelerView"}}
+          <!--
+              <web-modeler-view id="mapId" ng-style="{'height': isPopup ? 'calc(100vh - 224px)' : 'calc(100vh - 148px)'}" class="border0"
+                is-edit-mode="false" is-editable="false" is-std-sample-mode="false" map-type="mapType" map-options="mapOptions"
+                map-handler="mapHandler" proc-info="procInfo">
+              </web-modeler-view>
+              -->
+        </p>
+      </div>
+      <div class="data-group" ng-if="procInfo.mapType === PROC_MAP_TYPE.MAP">
+        <div class="data-group-title">
+          <span class="bullet-dot txt-point" translate="MESSAGE.MSG0238">프로세스 맵 인쇄 시 삭제된 상세업무는 표시되지 않습니다.</span>
+        </div>
+        {{each(i, elemData) procInfo.mapInfo.acts}}
+        ${( $data.elemData = elemData ),''}
+        ${( $data.actInfo = elemData ),''}
+        ${( $data.ACTS_TYPE = ACTS_TYPE ),''}
+        {{tmpl "#proc-act-view"}}
+        {{/each}}
+      </div>
+      {{/if}}
+      <!-- 절차서 케이스 -->
+      {{if procInfo.docBody && (procInfo.mngType == 'D' || procInfo.mapType == 'D')}}
+      <div class="tab-box"
+        ng-if="procInfo.docBody && (procInfo.mngType == PROC_MNG_TYPE.DOCUMENT || procInfo.mapType == PROC_MAP_TYPE.DOCUMENT)">
+        <!-- 직접 작성한 케이스-->
+        <div class="data-group on">
+          <div class="data-group-title">
+            <span class="bullet-dot" translate="LABEL.LBL0117">작성한 본문</span>
+          </div>
+          <div class="content-body-view on">
+            <div class="fr-box fr-basic">
+              <div class="fr-element fr-view" style="overflow: visible">
+                {{html procInfo.docBody}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+    {{/if}}
+  </script>
+  <!-- 상세업무 : Map -->
+  <script id="webModelerView" type="text/x-jquery-tmpl">
+    <div class="web-modeler-view relation-group view-readonly" ng-class="{'view-readonly': !isEditMode}">
+      <!-- <div id="web-modeler-map" class="web-modeler-map relation-box" ng-style="setModelerViewStyle()">
+        <web-modeler 
+          id="{modelerId}"
+          ng-class="setModelerClass()"
+          is-edit-mode="isEditMode"
+          is-editable="isEditable"
+          is-changed="isChanged"
+          map-type="{mapType}"
+          map-data="mapData"
+          map-options="options"
+          map-handler="handler"
+          style="">
+        </web-modeler>
+      </div>
+      <div id="web-modeler-table" class="relation-box" style="padding-left: 2px; border-left: 1px solid #b7c1ca;" ng-if="!isEditMode && mapType === 'process-grid'">
+        <div id="web-modeler-resizer" class="split-bar"></div>
+        <div id="ref-process-scroll" class="relation-inr">
+          <div class="relation-content">
+            <ref-process-type id="{modelerId}" proc-id="{procInfo.procId}" proc-version="{procInfo.procVersion}" data="procInfo.REFPROCESS" is-std-sample-mode="isStdSampleMode"></ref-process-type>
+          </div>
+        </div>
+      </div>
+      <proc-act-panel id="web-modeler-act-info" class="relation-box" params="actPanelParams" ng-if="isEditMode"></proc-act-panel>
+      -->
+      <!--
+    <div class="process-body" >
+      <div class="content-box" >
+          <div class="web-modeler-view">
+            <div id="app1" ref="graph1" class="web-modeler readonly">
+              <div class="paper-container"></div>
+            </div>
+          </div>
+      </div>
+    </div>
+  -->
+  </div>
+</script>

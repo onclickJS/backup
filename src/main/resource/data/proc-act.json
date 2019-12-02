@@ -1,0 +1,119 @@
+{
+	"docs": [
+		{
+			"actSeq": 2,
+			"orgActSeq": 0,
+			"actType": "A",
+			"actName": "해더 프로세스 + 맵 단위업무",
+			"relatedProcId": "",
+			"relatedActSeq": 0,
+			"id": null,
+			"deleteFlag": "N",
+			"procId": "00000000000000008895",
+			"procVersion": "7",
+			"relatedProcName": null,
+			"relatedActName": null,
+			"relatedActDesc": null,
+			"relatedActManagerDesc": null,
+			"actDesc": "해더 프로세스 + 맵\n설명",
+			"managerDesc": "해더",
+			"actIns": [
+				{
+					"procId": "00000000000000008895",
+					"procVersion": "7",
+					"actSeq": 2,
+					"inOutSeq": 1,
+					"inOutType": "Input",
+					"inOutName": "삭제할 표준문서4",
+					"directFlag": "N",
+					"docId": "00000000000000007700",
+					"deleteFlag": "Y",
+					"docVersion": "1.0",
+					"docTitle": "삭제할 표준문서4"
+				},
+				{
+					"procId": "00000000000000008895",
+					"procVersion": "7",
+					"actSeq": 2,
+					"inOutSeq": 2,
+					"inOutType": "Input",
+					"inOutName": "삭제할 표준문서3",
+					"directFlag": "N",
+					"docId": "00000000000000007699",
+					"deleteFlag": "Y",
+					"docVersion": "1.0",
+					"docTitle": "삭제할 표준문서3"
+				},
+				{
+					"procId": "00000000000000008895",
+					"procVersion": "7",
+					"actSeq": 2,
+					"inOutSeq": 3,
+					"inOutType": "Input",
+					"inOutName": "결제 테스트",
+					"directFlag": "N",
+					"docId": "00000000000000007775",
+					"deleteFlag": "N",
+					"docVersion": "v1.4",
+					"docTitle": "결제 테스트"
+				},
+				{
+					"procId": "00000000000000008895",
+					"procVersion": "7",
+					"actSeq": 2,
+					"inOutSeq": 4,
+					"inOutType": "Input",
+					"inOutName": "직접입력",
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actOuts": [
+				{
+					"procId": "00000000000000008895",
+					"procVersion": "7",
+					"actSeq": 2,
+					"inOutSeq": 1,
+					"inOutType": "Output",
+					"inOutName": "삭제할 표준문서2",
+					"directFlag": "N",
+					"docId": "00000000000000007698",
+					"deleteFlag": "Y",
+					"docVersion": "1.0",
+					"docTitle": "삭제할 표준문서2"
+				},
+				{
+					"procId": "00000000000000008895",
+					"procVersion": "7",
+					"actSeq": 2,
+					"inOutSeq": 2,
+					"inOutType": "Output",
+					"inOutName": "삭제할 표준문서1",
+					"directFlag": "N",
+					"docId": "00000000000000007697",
+					"deleteFlag": "Y",
+					"docVersion": "1.0",
+					"docTitle": "삭제할 표준문서1"
+				}
+			],
+			"actDocs": [
+				{
+					"procId": "00000000000000008895",
+					"procVersion": "7",
+					"actSeq": 2,
+					"docSeq": 1,
+					"docId": "00000000000000006732",
+					"deleteFlag": "N",
+					"docVersion": "1.4",
+					"docTitle": "제품 사양서_스크롤",
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		}
+	]
+}

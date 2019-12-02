@@ -1,0 +1,154 @@
+<script id="docHeaderTemplate" type="text/x-jquery-tmpl">
+        <div class="location">
+          <ul class="item-location">
+            {{each(i, path) info.docPaths}}
+            <li class="${i === 0? 'tenant-name': ''}">
+              <span>${path.nodeName}</span>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="sta-wrap">
+          <h2 class="sta">
+            <div class="ttl">
+            ${info.docTitle}
+              <span class="ver">${info.publishVersion}</span>
+            </div>
+          </h2>
+          <div class="disclosure-info">
+            <span>${formatDate(info.publishDate)}</span> 
+            <span>공개</span>
+            <span>{{if info.limitedFlag == 'Y'}}(보존기간:${info.retentionPeriodName}년){{else}}(보존기간:영구){{/if}}</span>
+          </div>
+          <!-- 부가정보 -->
+          <div class="additional">
+            <!-- 구분 -->
+            <dl class="item">
+              <dt>문서구분</dt>
+              <dd>${info.docCategoryName}</dd>
+            </dl>
+            <!-- 작성/검토/승인 -->
+            <dl class="item">
+              <dt>작성자</dt>
+              <dd>${info.modifier.userName}</dd>
+              {{if info.immediatePublishFlag == 'Y'}}
+                <dd>(즉시공개)</dd>
+              {{/if}}
+              {{if info.revewers.length}}
+                <dt>검토자</dt>
+                {{each info.revewers}}
+                <dd>
+                  <span class="ellipsis">${userName}</span>
+                  {{if $index < (info.revewers.length -1)}}, {{/if}}
+                </dd>
+                {{/each}}
+              {{/if}}
+              {{if info.approver}}
+                <dt>승인자</dt>
+                <dd>{{=info.approver.userName}}</dd>
+              {{/if}}
+            </dl>
+            <!-- 열람 구분 -->
+            <dl class="item">
+             <dt>열람구분</dt>
+              <dd>{{if info.viewState == 'N'}}일반{{else}}보안{{/if}}</dd>
+              <!-- 열람자 -->
+              {{if info.viewState == 'S'}}
+                <dt>열람자</dt>
+                {{each info.viewAuths}}
+                  <dd>{{=userName}}{{if $index < (info.viewAuths.length -1)}}, {{/if}}</dd>
+                {{/each}}
+              {{/if}}
+            </dl>
+          </div>
+          <!-- //부가정보 -->
+        </div>
+      <!-- //header -->
+  </script>
+<script id="docContentTemplate" type="text/x-jquery-tmpl">
+        <!-- 첨부파일 -->
+        <div>
+          {{tmpl "#fileAttachMultiViewTemplate"}}
+        </div>
+        <div class="tab-group">
+          <div class="tab-box">
+            {{if info.converterDocAttach}}
+            <div class="data-group on">
+              <div class="data-group-title">
+                <span class="bullet-dot">변환된 본문</span>
+              </div>
+              <div class="content-body-view on">
+                <div class="fr-box fr-basic">
+                  <div class="fr-element fr-view" style="overflow: visible">
+                    <span>${info.converterDocAttach.attachName}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+            {{if info.docBody}}
+            <div class="data-group on">
+              <div class="data-group-title">
+                <span class="bullet-dot">작성한 본문</span>
+              </div>
+              <div class="content-body-view on">
+                <div class="fr-box fr-basic">
+                  <div class="fr-element fr-view" style="overflow: visible">
+                    {{html info.docBody}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+          </div>
+          
+          <div class="tag-wrap">
+            <span id="btn-tag-layer" class="btn-tag-layer"> 
+              <i class="ico ico-tag"></i> 
+              <span class="text">업무구분</span>
+            </span>
+            <ul class="tags">
+              {{each info.workTypeTags}}
+              <li>
+                <span>${codeName}</span>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div> <!-- // .tab-group -->
+  </script>
+
+  <script id="fileAttachMultiViewTemplate" type="text/x-jquery-tmpl">
+          <div class="file-group download-type readonly">
+            <div class="file-fold">
+              <button type="button" class="btn-icon btn-file cursor-default">
+                <i class="ico ico-file-arr"></i>
+              </button>
+            </div>
+            <div id="file-content" class="file-box">
+              <div class="file-title-area">
+                <i class="ico ico-file-attach"></i> 파일첨부
+                  <span><b class="txt-point">${info.docAttaches.length}</b> 개</span>
+              </div>
+              {{if info.docAttaches.length > 0}}
+              <div class="file-list">
+                <ul>
+                {{each info.docAttaches}}
+                <li>
+                  <div class="btn-group file-ui">
+                    <!--<button type="button" class="btn-icon btn-file-ui">
+                      <i class="ico ico-download"></i>
+                    </button>-->
+                  </div>
+                  <div class="file-name-area">
+                    <em class="ellipsis" style="max-width: calc(100% - 64px)">${attachName}</em>
+                    <span style="width: 64px;">${filesize}</span>
+                  </div>
+                </li>
+                {{/each}}
+                </ul>
+              </div>
+              {{/if}}
+            </div>
+          </div>
+  </script>

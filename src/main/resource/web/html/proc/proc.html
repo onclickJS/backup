@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link type="text/css" rel="stylesheet" media="all" href="../web/css/pdf.css" />
+  <!-- <link type="text/css" rel="stylesheet" media="all" href="../web/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+
+  <link type="text/css" rel="stylesheet" media="all" href="../web/vendor/rappid/rappid.1.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="../web/vendor/web-modeler/css/web-modeler-layout.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="../web/vendor/web-modeler/css/web-modeler.css" />
+
+  <link type="text/css" rel="stylesheet" media="all" href="../web/vendor/froala/css/froala_style.min.css" />
+
+
+  <script type="text/javascript">
+    function setDepth(depth) {
+      document.write('var depth = ' + depth + ';');
+    }
+  </script>
+</head>
+
+<body class="print-wrap">
+  <section class="section ng-scope">
+    <div class="app-process">
+      <header class="header view"> </header>
+      <!-- contents -->
+      <div class="content"></div>
+    </div>
+  </section>
+
+  <script type="text/javascript" src="../web/vendor/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="../web/vendor/jquery/jquery.tmpl.min.js"></script>
+
+  <script type="text/javascript" src="../web/vendor/lodash/lodash.min.js"></script>
+  <script type="text/javascript" src="../web/vendor/backbone/backbone-min.js"></script>
+  <script type="text/javascript" src="../web/vendor/graphlib/graphlib.core.min.js"></script>
+  <script type="text/javascript" src="../web/vendor/dagre/dagre.core.min.js"></script>
+
+  <script type="text/javascript" src="../web/vendor/rappid/rappid.1.js"></script>
+  <script type="text/javascript" src="../web/vendor/rappid/rappid.2.element.js"></script>
+  <script type="text/javascript" src="../web/vendor/rappid/rappid.3.pool.js"></script>
+  <script type="text/javascript" src="../web/vendor/rappid/rappid.4.etc.js"></script>
+  <script type="text/javascript" src="../web/vendor/rappid/rappid.5.paper.js"></script>
+
+  <script type="text/javascript" src="../web/js/common.js"></script>
+  <script type="text/javascript" src="../web/js/work-action-service.js"></script>
+  <script type="text/javascript" src="../web/js/proc/proc-constant.js"></script>
+  <script type="text/javascript" src="../web/js/proc/web-modeler-constant.js"></script>
+  <script type="text/javascript" src="../web/js/proc/stencil.js"></script>
+  <script type="text/javascript" src="../web/js/proc/map.js"></script>
+
+  <script>
+    $.include("../web/html/proc/proc-template.html");
+  </script>
+  <script>
+    $.include("../web/html/proc/proc-detail-template.html");
+  </script>
+  <script>
+    $.include("../web/html/proc/proc-acts-template.html");
+  </script>
+
+  <script type="text/javascript">
+    var apiData = {
+      procInfo: null
+    };
+
+    function setData(data) {
+      var strJson = JSON.stringify(data);
+      var objJson = $.parseJSON(strJson);
+
+      setMngTypeName(objJson);
+      checkShowBasicTab(objJson);
+      getWorkRequestCompleteUsers(objJson);
+
+      apiData.procInfo = objJson;
+
+      addTemplate();
+    }
+
+    function addTemplate() {
+       $("#procHeaderTemplate").tmpl(apiData).appendTo(".header.view");
+
+       $("#procBasicTemplate").tmpl(apiData).appendTo(".content");
+
+      
+       $("#procDetailTemplate").tmpl({
+       procInfo: apiData.procInfo,
+       PROC_MAP_TYPE: PROC_CONSTANT.PROC_MAP_TYPE,
+       ACTS_TYPE: PROC_CONSTANT.ACTS_TYPE
+       }).appendTo(".content");
+
+       /* drawGraphs(apiData.procInfo.mapInfo); */
+    }
+
+    function setMngTypeName(procInfo) {
+      procInfo.mngTypeName = procInfo.mngType == PROC_CONSTANT.PROC_MNG_TYPE.PROCESS ?
+        '프로세스로 관리' : '절차서로 관리';
+    }
+
+    function checkShowBasicTab(procInfo) {
+      if (procInfo.mngType == PROC_CONSTANT.PROC_MNG_TYPE.PROCESS) {
+        procInfo.showBasicTab = true;
+      } else {
+        procInfo.showBasicTab = (procInfo.isoStandards && procInfo.isoStandards.length) ?
+          true : false;
+      }
+    }
+
+    function drawGraphs(mapInfo) {
+      console.debug('mapInfo', mapInfo);
+      var app = new App.MainView({
+        el: '#app1'
+      });
+
+      var mapType = 'process-grid';
+      var mapData = {};
+      mapData.mapProc = mapInfo.mapProc;
+      mapData.modelerJson = null;
+
+      var mapCell = mapInfo.mapCell;
+
+      console.debug('mapInfo.mapCell', mapCell);
+      if (mapCell) {
+        mapData.modelerJson = JSON.parse(decodeURIComponent(mapCell));
+      }
+      console.debug('mapData.modelerJson', mapData.modelerJson);
+
+      app.drawFromJSON(mapData.modelerJson, mapType);
+
+    }
+  </script>
+
+</body>
+
+</html>

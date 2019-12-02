@@ -1,0 +1,174 @@
+<!-- proc-acts -->
+<script id="proc-act-view" type="text/x-jquery-tmpl">
+  <div class="data-box" ng-repeat="elemData in actList | orderBy: sortActList">
+    {{if (elemData.actType == ACTS_TYPE.PROCESS)}}
+    {{tmpl "#proc-act-etc-view"}}
+    {{else elemData.actType == ACTS_TYPE.ACTIVITY}}
+    {{tmpl "#proc-act-normal-view"}}
+    {{else elemData.actType == ACTS_TYPE.EXT_ACTIVITY}}
+    {{if !elemData.relatedProcId}}
+    {{tmpl "#proc-act-etc-view"}}
+    {{else}}
+    {{tmpl "#proc-act-normal-view"}}
+    {{/if}}
+    {{else elemData.actType == ACTS_TYPE.SUB_PROC}}
+    <!-- 서브프로세스는 프로세스명만 노출 -->
+    <div ng-if="elemData.actType == ACTS_TYPE.SUB_PROC">
+      <div class="table-group ng-scope">
+        <div class="table-box">
+          <table class="table vertical read-type">
+            <colgroup>
+              <col style="width:105px;">
+              <col>
+            </colgroup>
+            <tbody>
+              <tr>
+                <th class="bdr-l0">
+                  <div><span translate="LABEL.LBL0573">프로세스명</span></div>
+                </th>
+                <td>
+                  <div><span ng-bind="elemData.actName">${elemData.actName}</span></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    {{tmpl "#proc-act-etc-view"}}
+    {{/if}}
+  </div>
+</script>
+<script id="proc-act-etc-view" type="text/x-jquery-tmpl">
+  <div class="table-group">
+    <div class="table-box">
+      <table class="table vertical read-type">
+        <colgroup>
+          <col style="width:105px;">
+          <col>
+        </colgroup>
+        <tbody>
+          <tr>
+            <th class="bdr-l0"><div><span translate="LABEL.LBL0137">이름</span></div></th>
+            <td>
+              <div><span ng-bind="actInfo.actName">${actInfo.actName}</span></div>
+            </td>
+          </tr>
+          <tr ng-if="showDesc">
+            <th class="bdr-l0"><div><span translate="LABEL.LBL0139">정의</span></div></th>
+            <td style="height: 91px;">
+              <div><span ng-bind-html="actInfo.actDesc">${( $data.convertedActDesc = nl2brString(actInfo.actDesc) ),''} {{html convertedActDesc }}</span></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</script>
+<script id="proc-act-normal-view" type="text/x-jquery-tmpl">
+  <div class="table-group">
+    <div class="table-box">
+      <table class="table vertical read-type">
+        <colgroup>
+          <col style="width:105px;">
+          <col>
+        </colgroup>
+        <tbody>
+          <tr>
+            <th class="bdr-l0">
+              <div><span translate="LABEL.LBL0131">단위업무명</span></div>
+            </th>
+            <td>
+              <div><span ng-bind="actInfo.actName">${actInfo.actName}</span></div>
+            </td>
+          </tr>
+          <tr>
+            <th class="bdr-l0">
+              <div>
+                <span translate="LABEL.LBL0046">설명</span>
+              </div>
+            </th>
+            <td>
+              <div>
+                <span class="unit-des" ng-bind-html="actInfo.actDesc|nl2brString">${( $data.convertedActDesc =
+                  nl2brString(actInfo.actDesc) ),''} {{html convertedActDesc }}</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th class="bdr-l0">
+              <div><span translate="LABEL.LBL0132">입력</span></div>
+            </th>
+            <td ng-class="actInfo.actIns.length ? '' : 'color-gray96'"
+              class="${actInfo.actDocs.length? '': 'color-gray96'}">
+              <doc-mapping-list doc-list="actInfo.actIns" type-title="LABEL.LBL0582" name-title="LABEL.LBL0156"
+                in-out-type="Input" view-type="simple" is-std-sample-mode="isStdSampleMode"></doc-mapping-list>
+
+              ${( $data.docList = actInfo.actIns ),''}
+              {{tmpl "#doc-mapping-list-simple-view"}}
+
+            </td>
+          </tr>
+          <tr>
+            <th class="bdr-l0">
+              <div><span translate="LABEL.LBL0133">출력</span></div>
+            </th>
+            <td ng-class="actInfo.actOuts.length ? '' : 'color-gray96'"
+              class="${actInfo.actDocs.length? '': 'color-gray96'}">
+              <doc-mapping-list doc-list="actInfo.actOuts" type-title="LABEL.LBL0582" name-title="LABEL.LBL0157"
+                in-out-type="Output" view-type="simple" is-std-sample-mode="isStdSampleMode"></doc-mapping-list>
+
+              ${( $data.docList = actInfo.actOuts ),''}
+              {{tmpl "#doc-mapping-list-simple-view"}}
+
+            </td>
+          </tr>
+          <tr>
+            <th class="bdr-l0">
+              <div><span translate="LABEL.LBL0078">관련문서</span></div>
+            </th>
+            <td ng-class="actInfo.actDocs.length ? '' : 'color-gray96'"
+              class="${actInfo.actDocs.length? '': 'color-gray96'}">
+              <doc-mapping-list doc-list="actInfo.actDocs" type-title="LABEL.LBL0582" name-title="LABEL.LBL0158"
+                view-type="simple" is-std-sample-mode="isStdSampleMode"></doc-mapping-list>
+
+              ${( $data.docList = actInfo.actDocs ),''}
+              ${( $data.isOnlyDoc = true ),''}
+              {{tmpl "#doc-mapping-list-simple-view"}}
+
+            </td>
+          </tr>
+          <tr>
+            <th class="bdr-l0">
+              <div><span translate="LABEL.LBL0135">담당자</span></div>
+            </th>
+            <td>
+              <div><span ng-bind="actInfo.managerDesc">${actInfo.managerDesc}</span></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</script>
+<script id="doc-mapping-list-simple-view" type="text/x-jquery-tmpl">
+  <div>
+    <ul>
+      {{each(i, row) docList}}
+      <li ng-repeat="row in docList">
+        {{if row.directFlag != 'Y'}}
+        <span mapping-name="row" mapping-name-options="{nameCol: isOnlyDoc ? 'docTitle' : 'inOutName', delCol: 'deleteFlag'}" ng-if="isOnlyDoc || row.directFlag === 'N'"
+          class="${row.deleteFlag == 'Y' ? 'del-text': ''}">
+          <a class="mapping-name-target">{{if row.deleteFlag == 'Y'}}(삭제){{/if}}
+            <span class="ng-scope">${$data.isOnlyDoc ? row.docTitle : row.inOutName}</span>
+          </a>
+        </span>
+        {{else}}
+        <span ng-if="row.directFlag === 'Y'" ng-bind-html="row.inOutName | linky:'_blank'">${row.inOutName}</span>
+        {{/if}}
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</script>

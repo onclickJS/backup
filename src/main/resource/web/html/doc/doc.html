@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+
+<link type="text/css" rel="stylesheet" media="all" href="../web/css/pdf.css">
+<link type="text/css" rel="stylesheet" media="all" href="../web/vendor/froala/css/froala_style.min.css">
+
+</head>
+<body class="print-wrap">
+  <section class="section">
+    <div class="app-document">
+      <header class="header view">
+      </header>
+      <div class="content">
+      </div>
+    </div>
+  </section>
+
+  <script type="text/javascript" src="../web/vendor/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="../web/vendor/jquery/jquery.tmpl.min.js"></script>
+  <script type="text/javascript" src="../web/js/common.js"></script>
+  <script type="text/javascript" src="../web/js/work-action-service.js"></script>
+  <script type="text/javascript">
+  var apiData = {info: null};
+  
+  function setData(data){
+    var strJson = JSON.stringify(data);
+    var objJson = $.parseJSON(strJson);
+    
+    getWorkRequestCompleteUsers(objJson);
+    
+    apiData.info = objJson;
+    
+    addTemplate();
+  }
+  
+  function addTemplate() {
+    $( "#docHeaderTemplate" )
+    .tmpl( apiData )
+    .appendTo( ".header.view" );
+    
+    $( "#docContentTemplate" )
+    .tmpl( apiData )
+    .appendTo( ".content" );
+  }
+  
+  function appendPath(html) {
+    $('.tenant-name').append(html);
+  }
+
+  </script>
+  
+  <script>$.include("../web/html/doc/doc-template.html");</script>
+</body>
+</html>

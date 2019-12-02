@@ -1,0 +1,721 @@
+{
+	"docs": [
+		{
+			"actSeq": 2,
+			"orgActSeq": 0,
+			"actType": "A",
+			"actName": "해더 프로세스 + 맵 단위업무11",
+			"relatedProcId": "",
+			"relatedActSeq": 0,
+			"id": null,
+			"deleteFlag": "N",
+			"procId": "00000000000000009167",
+			"procVersion": "5",
+			"relatedProcName": null,
+			"relatedActName": null,
+			"relatedActDesc": null,
+			"relatedActManagerDesc": null,
+			"actDesc": "해더 프로세스 + 맵\n설명2132123sdfsdf",
+			"managerDesc": "해더",
+			"actIns": [
+				{
+					"actSeq": 2,
+					"inOutSeq": 1,
+					"inOutType": "Input",
+					"inOutName": "삭제할 표준문서4",
+					"directFlag": "N",
+					"docId": "00000000000000007700",
+					"deleteFlag": "Y",
+					"docVersion": "1.0",
+					"docTitle": "삭제할 표준문서4"
+				},
+				{
+					"actSeq": 2,
+					"inOutSeq": 2,
+					"inOutType": "Input",
+					"inOutName": "삭제할 표준문서3",
+					"directFlag": "N",
+					"docId": "00000000000000007699",
+					"deleteFlag": "Y",
+					"docVersion": "1.0",
+					"docTitle": "삭제할 표준문서3"
+				}
+			],
+			"actOuts": [
+				{
+					"actSeq": 2,
+					"inOutSeq": 1,
+					"inOutType": "Output",
+					"inOutName": "삭제할 표준문서2",
+					"directFlag": "N",
+					"docId": "00000000000000007698",
+					"deleteFlag": "Y",
+					"docVersion": "1.0",
+					"docTitle": "삭제할 표준문서2"
+				},
+				{
+					"actSeq": 2,
+					"inOutSeq": 2,
+					"inOutType": "Output",
+					"inOutName": "삭제할 표준문서1",
+					"directFlag": "N",
+					"docId": "00000000000000007697",
+					"deleteFlag": "Y",
+					"docVersion": "1.0",
+					"docTitle": "삭제할 표준문서1"
+				},
+				{
+					"actSeq": 2,
+					"inOutSeq": 3,
+					"inOutType": "Output",
+					"inOutName": "컨버터 테스트 - 이미지",
+					"directFlag": "N",
+					"docId": "00000000000000008842",
+					"deleteFlag": "N",
+					"docVersion": "2.2",
+					"docTitle": "컨버터 테스트 - 이미지"
+				}
+			],
+			"actDocs": [
+				{
+					"actSeq": 2,
+					"docSeq": 1,
+					"docId": "00000000000000007693",
+					"deleteFlag": "Y",
+					"docVersion": "1.3",
+					"docTitle": "해더의 표준문서",
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		},
+		{
+			"actSeq": 4,
+			"orgActSeq": 0,
+			"actType": "SP",
+			"actName": "프로세스 추가 - 절차",
+			"relatedProcId": "00000000000000009006",
+			"relatedActSeq": 0,
+			"id": null,
+			"deleteFlag": "N",
+			"procId": "00000000000000009167",
+			"procVersion": "5",
+			"relatedProcName": null,
+			"relatedActName": null,
+			"relatedActDesc": null,
+			"relatedActManagerDesc": null,
+			"actDesc": "",
+			"managerDesc": "",
+			"actIns": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actOuts": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actDocs": [
+				{
+					"actSeq": 0,
+					"docSeq": 0,
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null,
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		},
+		{
+			"actSeq": 5,
+			"orgActSeq": 0,
+			"actType": "G",
+			"actName": "업무 중요도 판단12",
+			"relatedProcId": "",
+			"relatedActSeq": 0,
+			"id": null,
+			"deleteFlag": "N",
+			"procId": "00000000000000009167",
+			"procVersion": "5",
+			"relatedProcName": null,
+			"relatedActName": null,
+			"relatedActDesc": null,
+			"relatedActManagerDesc": null,
+			"actDesc": "업무 중요도 판단\n설명",
+			"managerDesc": "",
+			"actIns": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actOuts": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actDocs": [
+				{
+					"actSeq": 0,
+					"docSeq": 0,
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null,
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		},
+		{
+			"actSeq": 6,
+			"orgActSeq": 0,
+			"actType": "SP",
+			"actName": "해더의 삭제한 프로세스",
+			"relatedProcId": "00000000000000008866",
+			"relatedActSeq": 0,
+			"id": null,
+			"deleteFlag": "Y",
+			"procId": "00000000000000009167",
+			"procVersion": "5",
+			"relatedProcName": null,
+			"relatedActName": null,
+			"relatedActDesc": null,
+			"relatedActManagerDesc": null,
+			"actDesc": "",
+			"managerDesc": "",
+			"actIns": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actOuts": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actDocs": [
+				{
+					"actSeq": 0,
+					"docSeq": 0,
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null,
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		},
+		{
+			"actSeq": 7,
+			"orgActSeq": 0,
+			"actType": "SP",
+			"actName": "삭제한유저의 프로세스입니다.",
+			"relatedProcId": "00000000000000008773",
+			"relatedActSeq": 0,
+			"id": null,
+			"deleteFlag": "N",
+			"procId": "00000000000000009167",
+			"procVersion": "5",
+			"relatedProcName": null,
+			"relatedActName": null,
+			"relatedActDesc": null,
+			"relatedActManagerDesc": null,
+			"actDesc": "",
+			"managerDesc": "",
+			"actIns": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actOuts": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actDocs": [
+				{
+					"actSeq": 0,
+					"docSeq": 0,
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null,
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		},
+		{
+			"actSeq": 8,
+			"orgActSeq": 0,
+			"actType": "SP",
+			"actName": "해더의매핑대상프로세스",
+			"relatedProcId": "00000000000000008918",
+			"relatedActSeq": 0,
+			"id": null,
+			"deleteFlag": "Y",
+			"procId": "00000000000000009167",
+			"procVersion": "5",
+			"relatedProcName": null,
+			"relatedActName": null,
+			"relatedActDesc": null,
+			"relatedActManagerDesc": null,
+			"actDesc": "",
+			"managerDesc": "",
+			"actIns": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actOuts": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actDocs": [
+				{
+					"actSeq": 0,
+					"docSeq": 0,
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null,
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		},
+		{
+			"actSeq": 10,
+			"orgActSeq": 0,
+			"actType": "A",
+			"actName": "단위업무1",
+			"relatedProcId": "",
+			"relatedActSeq": 0,
+			"id": null,
+			"deleteFlag": "N",
+			"procId": "00000000000000009167",
+			"procVersion": "5",
+			"relatedProcName": null,
+			"relatedActName": null,
+			"relatedActDesc": null,
+			"relatedActManagerDesc": null,
+			"actDesc": "단위업무1",
+			"managerDesc": "단위업무1",
+			"actIns": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actOuts": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actDocs": [
+				{
+					"actSeq": 0,
+					"docSeq": 0,
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null,
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		},
+		{
+			"actSeq": 11,
+			"orgActSeq": 0,
+			"actType": "G",
+			"actName": "판단기회1",
+			"relatedProcId": "",
+			"relatedActSeq": 0,
+			"id": null,
+			"deleteFlag": "N",
+			"procId": "00000000000000009167",
+			"procVersion": "5",
+			"relatedProcName": null,
+			"relatedActName": null,
+			"relatedActDesc": null,
+			"relatedActManagerDesc": null,
+			"actDesc": "",
+			"managerDesc": "",
+			"actIns": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actOuts": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actDocs": [
+				{
+					"actSeq": 0,
+					"docSeq": 0,
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null,
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		},
+		{
+			"actSeq": 12,
+			"orgActSeq": 0,
+			"actType": "G",
+			"actName": "판단기회",
+			"relatedProcId": "",
+			"relatedActSeq": 0,
+			"id": null,
+			"deleteFlag": "N",
+			"procId": "00000000000000009167",
+			"procVersion": "5",
+			"relatedProcName": null,
+			"relatedActName": null,
+			"relatedActDesc": null,
+			"relatedActManagerDesc": null,
+			"actDesc": "",
+			"managerDesc": "",
+			"actIns": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actOuts": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actDocs": [
+				{
+					"actSeq": 0,
+					"docSeq": 0,
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null,
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		},
+		{
+			"actSeq": 3,
+			"orgActSeq": 0,
+			"actType": "EA",
+			"actName": "삭제한 프로세스의 단위업무",
+			"relatedProcId": "00000000000000008866",
+			"relatedActSeq": 2,
+			"id": null,
+			"deleteFlag": "Y",
+			"procId": "00000000000000009167",
+			"procVersion": "5",
+			"relatedProcName": "해더의 삭제한 프로세스",
+			"relatedActName": "삭제한 프로세스의 단위업무",
+			"relatedActDesc": "삭제한 프로세스의 단위업무\n삭제한 프로세스의 단위업무\n삭제한 프로세스의 단위업무\n삭제한 프로세스의 단위업무삭제한 프로세스의 단위업무\n삭제한 프로세스의 단위업무삭제한 프로세스의 단위업무\n삭제한 프로세스의 단위업무",
+			"relatedActManagerDesc": "삭제할꺼야",
+			"actDesc": null,
+			"managerDesc": "",
+			"actIns": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 2,
+					"inOutType": "Input",
+					"inOutName": "(표준) 해더의 삭제한 표준문서",
+					"directFlag": "N",
+					"docId": "00000000000000007692",
+					"deleteFlag": "Y",
+					"docVersion": "1.0",
+					"docTitle": "(표준) 해더의 삭제한 표준문서"
+				}
+			],
+			"actOuts": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 2,
+					"inOutType": "Output",
+					"inOutName": "삭제할꺼에요",
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actDocs": [
+				{
+					"actSeq": 2,
+					"docSeq": 1,
+					"docId": "00000000000000007692",
+					"deleteFlag": "Y",
+					"docVersion": "1.0",
+					"docTitle": "(표준) 해더의 삭제한 표준문서",
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		},
+		{
+			"actSeq": 14,
+			"orgActSeq": 0,
+			"actType": "EA",
+			"actName": "해더 프로세스 + 맵 단위업무",
+			"relatedProcId": "00000000000000008895",
+			"relatedActSeq": 2,
+			"id": null,
+			"deleteFlag": "N",
+			"procId": "00000000000000009167",
+			"procVersion": "5",
+			"relatedProcName": "해더 프로세스 +             맵",
+			"relatedActName": "해더 프로세스 + 맵 단위업무",
+			"relatedActDesc": "해더 프로세스 + 맵\n설명",
+			"relatedActManagerDesc": "해더",
+			"actDesc": null,
+			"managerDesc": "",
+			"actIns": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 2,
+					"inOutType": "Input",
+					"inOutName": "삭제할 표준문서4",
+					"directFlag": "N",
+					"docId": "00000000000000007700",
+					"deleteFlag": "Y",
+					"docVersion": "1.0",
+					"docTitle": "삭제할 표준문서4"
+				}
+			],
+			"actOuts": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 2,
+					"inOutType": "Output",
+					"inOutName": "삭제할 표준문서2",
+					"directFlag": "N",
+					"docId": "00000000000000007698",
+					"deleteFlag": "Y",
+					"docVersion": "1.0",
+					"docTitle": "삭제할 표준문서2"
+				}
+			],
+			"actDocs": [
+				{
+					"actSeq": 2,
+					"docSeq": 1,
+					"docId": "00000000000000006732",
+					"deleteFlag": "N",
+					"docVersion": "1.4",
+					"docTitle": "제품 사양서_스크롤",
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		},
+		{
+			"actSeq": 16,
+			"orgActSeq": 0,
+			"actType": "EA",
+			"actName": "ㅁㅐ핑",
+			"relatedProcId": "00000000000000009178",
+			"relatedActSeq": 4,
+			"id": null,
+			"deleteFlag": "N",
+			"procId": "00000000000000009167",
+			"procVersion": "5",
+			"relatedProcName": "가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나",
+			"relatedActName": null,
+			"relatedActDesc": null,
+			"relatedActManagerDesc": null,
+			"actDesc": null,
+			"managerDesc": "",
+			"actIns": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actOuts": [
+				{
+					"actSeq": 0,
+					"inOutSeq": 0,
+					"inOutType": null,
+					"inOutName": null,
+					"directFlag": "Y",
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null
+				}
+			],
+			"actDocs": [
+				{
+					"actSeq": 0,
+					"docSeq": 0,
+					"docId": null,
+					"deleteFlag": "N",
+					"docVersion": null,
+					"docTitle": null,
+					"docCategoryType": null,
+					"docCategoryId": null,
+					"docCategoryName": null
+				}
+			]
+		}
+	]
+}

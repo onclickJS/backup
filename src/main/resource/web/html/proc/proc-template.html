@@ -1,0 +1,349 @@
+<script id="procHeaderTemplate" type="text/x-jquery-tmpl">
+  <div class="sta-wrap">
+    <div class="location">
+      <ul class="item-location">
+        {{each(i, path) procInfo.procPaths}}
+        <li class="${i === 0? 'tenant-name': ''}">
+          <span>${path.procName}</span>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    <h2 class="sta">
+      <div class="ttl">
+        {{= procInfo.procName}}
+        <span class="ver">${procInfo.publishVersion}</span>
+      </div>
+    </h2>
+    <div class="disclosure-info">
+      <span>${formatDate(procInfo.publishDate)}</span>
+      <span>공개</span>
+    </div>
+    <!-- 부가정보 -->
+    <div class="additional">
+      <!-- 구분 -->
+      <dl class="item">
+        <dt>관리구분</dt>
+        <dd>${procInfo.mngTypeName}</dd>
+      </dl>
+      <!-- 작성/검토/승인 -->
+      <dl class="item">
+        <dt>작성자</dt>
+        <dd>${procInfo.modifier.userName}</dd>
+        {{if procInfo.immediatePublishFlag == 'Y'}}
+        <dd>(즉시공개)</dd>
+        {{/if}}
+        {{if procInfo.revewers.length}}
+        <dt>검토자</dt>
+        {{each procInfo.revewers}}
+        <dd>
+          <span class="ellipsis">${userName}</span>
+          {{if $index < (procInfo.revewers.length -1)}}, {{/if}}
+        </dd>
+        {{/each}}
+        {{/if}}
+        {{if procInfo.approver}}
+        <dt>승인자</dt>
+        <dd>{{=procInfo.approver.userName}}</dd>
+        {{/if}}
+      </dl>
+    </div>
+    <!-- //부가정보 -->
+  </div>
+</script>
+
+<!-- 기본정보 -->
+<script id="procBasicTemplate" type="text/x-jquery-tmpl">
+  {{if procInfo.showBasicTab}}
+  <div class="tab-group" ng-if="showBasicTab">
+    <div class="tab-group-title">
+      <h3>&#x29BE;&nbsp;기본정보</h3>
+    </div>
+    <div class="data-group">
+      {{if procInfo.mngType == 'P'}}
+      {{tmpl "#puposeNscopeTemplate"}}
+      {{tmpl "#responsibilitiesNauthorityTemplate"}}
+      {{tmpl "#inputNoutputTemplate"}}
+      {{/if}}
+
+      {{if procInfo.isoStandards.length}}
+      <div class="data-group-title">
+        <span class="bullet-dot">매칭 규격 정보</span>
+      </div>
+      <div class="data-box">
+        <!-- isoStandard 탭 내용 -->
+        {{tmpl "#isoStandardTemplate"}}
+      </div>
+      {{/if}}
+    </div>
+  </div>
+  {{/if}}
+</script>
+
+<!-- 목적 및 적용 범위 -->
+<script id="puposeNscopeTemplate" type="text/x-jquery-tmpl">
+  <div class="data-group-title">
+    <span class="bullet-dot" translate="LABEL.LBL0109">목적 및 적용 범위</span>
+  </div>
+  <div class="data-box">
+    <div class="table-group">
+      <div class="table-box">
+        <table class="table vertical read-type">
+          <colgroup>
+            <col style="width:20%">
+            <col>
+          </colgroup>
+          <tbody>
+            <tr>
+              <th class="bdr-l0">
+                <div>
+                  <span translate="LABEL.LBL0110">목적</span>
+                </div>
+              </th>
+              <td>
+                <div>
+                  <span ng-bind-html="procInfo.purpose|nl2brString">{{html procInfo.purpose}}</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <div>
+                  <span translate="LABEL.LBL0064">적용 범위</span>
+                </div>
+              </th>
+              <td>
+                <div>
+                  <span ng-bind-html="procInfo.scope|nl2brString">{{html procInfo.scope}}</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</script>
+
+<!-- 02 책임과 권한 -->
+<script id="responsibilitiesNauthorityTemplate" type="text/x-jquery-tmpl">
+  <div class="data-group-title">
+    <span class="bullet-dot" translate="LABEL.LBL0055">책임과 권한</span>
+  </div>
+  <div class="data-box">
+    <div class="table-group">
+      <div class="table-box">
+        <table class="table vertical read-type">
+          <colgroup>
+            <col style="width:20%">
+            <col>
+          </colgroup>
+          <tbody>
+            {{each(i, item) procInfo.responsibilities}}
+            <tr>
+              <th class="bdr-l0">
+                <div>
+                  <span ng-bind="item.responsibility">${item.responsibility}</span>
+                </div>
+              </th>
+              <td>
+                <div>
+                  <span ng-bind-html="item.authority|nl2brString">${item.authority}</span>
+                </div>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</script>
+
+<!-- 03 선후행 프로세스 및 입출력 -->
+<script id="inputNoutputTemplate" type="text/x-jquery-tmpl">
+  <div class="data-group-title">
+    <span class="bullet-dot" translate="LABEL.LBL0111">선후행 프로세스 및 입출력</span>
+  </div>
+  <div class="data-box">
+    <div class="in-out-put-group read-type">
+      {{tmpl(procList = procInfo.work.preProcs, name = '선행 프로세스') "#prepostProcessTemplate"}}
+      <!-- 입력 -->
+      {{tmpl(docList = procInfo.work.inputs, name = '입력') "#docMappingListSeparateTemplate"}}
+      is-std-sample-mode="isStdSampleMode"></doc-mapping-list>
+      <!-- 출력 -->
+      {{tmpl(docList = procInfo.work.outputs, name = '출력') "#docMappingListSeparateTemplate"}}
+      is-std-sample-mode="isStdSampleMode"></doc-mapping-list>
+      {{tmpl(procList = procInfo.work.postProcs, name = '후행 프로세스') "#prepostProcessTemplate"}}
+    </div>
+  </div>
+</script>
+
+<!-- 선행프로세스/후행프로세스 -->
+<script id="prepostProcessTemplate" type="text/x-jquery-tmpl">
+  <div class="table-group">
+    <div class="table-box">
+      <table class="table horizontal write-type">
+        <colgroup>
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th class="bdr-l0">
+              <div>
+                <span>${name}</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bdr-l0">
+              <div class="process-group">
+                <div class="process-list-group">
+                  <ul>
+                    {{each(i, item) procList}}
+                    <li ng-repeat="item in procList">
+                      <span>
+                        {{if item.workProcVersion == 'EDIT'}}
+                        <em class="draft" ng-if="item.workProcVersion === 'EDIT'" translate="LABEL.LBL0183">초안</em>
+                        {{/if}}
+                      </span>
+                      <div ng-class="{'pd-r0': !isEditMode}" class="pd-r0">
+                        <div mapping-name="item" mapping-name-options="{nameCol: 'workProcName', delCol: 'deleteFlag'}"
+                          class="${item.deleteFlag == 'Y' ? 'del-text': ''}">
+                          <a class="mapping-name-target" href="#" title="{{item.workProcName}}"
+                            ng-click="onProcessClick($event, item.workProcId, item.workProcVersion)">
+                            <span>${workProcName}</span>
+                          </a>
+                          <button type="button" class="btn btn-default type9" ng-if="isEditMode"
+                            ng-click="deleteRow(procList, $index)"><i class="ico ico-delete2"></i></button>
+                        </div>
+                      </div>
+                    </li>
+                    {{/each}}
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</script>
+
+<!-- 입력 / 출력 -->
+<script id="docMappingListSeparateTemplate" type="text/x-jquery-tmpl">
+  <div class="table-group">
+    <div class="table-box">
+      <table class="table horizontal write-type">
+        <colgroup>
+          <col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th class="bdr-l0">
+              <div><span>${name}</span></div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bdr-l0">
+              <div class="process-group">
+                <div class="process-list-group">
+                  <ul>
+                    {{each(i, row) docList}}
+                    <li ng-repeat="row in docList" ng-mouseover="tooltipBoxOn = true"
+                      ng-mouseleave="tooltipBoxOn = false">
+                      {{if row.directFlag == 'N'}}
+                      <span ng-show="row.directFlag === 'N'"><em translate="LABEL.LBL0628">표준</em></span>
+                      {{/if}}
+                      <div ng-class="{'pd-r0': !isEditMode}" class="pd-r0">
+                        <div mapping-name="row" mapping-name-options="{nameCol: 'docTitle', delCol: 'deleteFlag'}"
+                          ng-class="{pd0: !isEditMode}" class="${row.deleteFlag == 'Y' ? 'pd0 del-text': 'pd0'}">
+                          {{if row.directFlag == 'N'}}
+                          <a class="mapping-name-target" href="#" title="{{row.docTitle}}"
+                            ng-show="row.directFlag === 'N'"
+                            ng-click="openDocPopup($event, row.docId, row.docCategoryType)">
+                            {{if item.deleteFlag == 'Y'}}(삭제){{/if}}
+                            <span>${row.docTitle}</span>
+                          </a>
+                          {{else}}
+                          <span class="ellipsis" title="{{row.inOutName}}" ng-show="row.directFlag === 'Y'"
+                            ng-bind-html="row.inOutName | linky:'_blank'">${row.inOutName}</span>
+                          {{/if}}
+                        </div>
+                      </div>
+                    </li>
+                    {{/each}}
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</script>
+
+<!-- 04 매칭 규격 정보 -->
+<script id="isoStandardTemplate" type="text/x-jquery-tmpl">
+  {{each(i, item) procInfo.isoStandards}}
+  <p class="tab-title" ng-bind="item.isoStandardName">${item.isoStandardName}</p>
+  <div class="tab-box">
+    <div class="table-group">
+      <div class="table-box">
+        <table class="table horizontal read-type">
+          <colgroup>
+            <col class="col-type08">
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="bdr-l0">
+                <div>
+                  <span translate="LABEL.LBL0178">조항</span>
+                </div>
+              </th>
+              <th>
+                <div>
+                  <span translate="LABEL.LBL0179">요구사항</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{if item.isoReqs.length == 0}}
+            <tr class="not-found">
+              <td class="bdr-l0" colspan="2">
+                <div>
+                  <span ng-bind="noDataMsg || 'MESSAGE.MSG0010'|translate">등록된 정보가 없습니다.</span>
+                </div>
+              </td>
+            </tr>
+            {{else}}
+            {{each item.isoReqs}}
+            <tr>
+              <td class="bdr-l0">
+                <div>
+                  <span ng-bind="isoReq.isoReqName">${isoReqName}</span>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <span ng-bind="isoReq.isoReqDesc">${isoReqDesc}</span>
+                </div>
+              </td>
+            </tr>
+            {{/each}}
+            {{/if}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</script>

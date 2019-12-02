@@ -1,0 +1,20 @@
+{
+	"docs": [
+		{
+			"riskId": "00000000000000000056",
+			"riskTitle": "Test risk 1",
+			"riskDesc": "111",
+			"effectNOutcome": "ㅁㄴㄹㅁㄴㄹㅇㅁㄴㄹ",
+			"ratingName": "사소",
+			"deleteFlag": "N"
+		},
+		{
+			"riskId": "00000000000000000349",
+			"riskTitle": "리스크 멀티 검토",
+			"riskDesc": "111",
+			"effectNOutcome": "3333",
+			"ratingName": "사소",
+			"deleteFlag": "N"
+		}
+	]
+}
