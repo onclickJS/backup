@@ -38,7 +38,7 @@ public class ProcPdfConvertor {
   public void downHtmlToPdf() {
 
     final WebClient webClient = new WebClient(BrowserVersion.CHROME);
-    // webClient.waitForBackgroundJavaScript(30000); // js 응답 시간을 기다리도록 페이지 설정
+//     webClient.waitForBackgroundJavaScript(600 * 1000); // js 응답 시간을 기다리도록 페이지 설정
     // webClient.waitForBackgroundJavaScriptStartingBefore(30000);
     // webClient.setJavaScriptTimeout(10000); // JS 실행 시간 초과 설정
 
@@ -79,8 +79,9 @@ public class ProcPdfConvertor {
       fileWriter.close();
 
       final HtmlPage htmlPage = webClient.getPage(outFile.toURI().toURL().toString());
-      webClient.waitForBackgroundJavaScript(100 * 1000); /* will wait JavaScript to execute up to 10s */
-
+//      webClient.waitForBackgroundJavaScript(800 * 1000); /* will wait JavaScript to execute up to 10s */
+      webClient.waitForBackgroundJavaScriptStartingBefore(600 * 1000);
+      
       // javascript call
       htmlPage.executeJavaScript("setData(" + procInfo + ")");
 

@@ -12,12 +12,6 @@
 
   <link type="text/css" rel="stylesheet" media="all" href="../web/vendor/froala/css/froala_style.min.css" />
 
-
-  <script type="text/javascript">
-    function setDepth(depth) {
-      document.write('var depth = ' + depth + ';');
-    }
-  </script>
 </head>
 
 <body class="print-wrap">
@@ -90,7 +84,7 @@
        ACTS_TYPE: PROC_CONSTANT.ACTS_TYPE
        }).appendTo(".content");
 
-       /* drawGraphs(apiData.procInfo.mapInfo); */
+       drawGraphs(apiData.procInfo.mapInfo);
     }
 
     function setMngTypeName(procInfo) {
@@ -126,7 +120,8 @@
       }
       console.debug('mapData.modelerJson', mapData.modelerJson);
 
-      app.drawFromJSON(mapData.modelerJson, mapType);
+        app.drawFromJSON(mapData.modelerJson, mapType);  
+      
 
     }
   </script>
